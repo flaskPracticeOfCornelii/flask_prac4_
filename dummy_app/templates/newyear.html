@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .christmas{
+            font-size:500%;
+            color:gold;
+            background-color:royalblue;
+        }
+    </style>
+</head>
+<body style="text-align:center;">
+    <h1>Is it new year's day?</h1>
+    {%if mon==1 and day==1%}
+    <p>Yes, right. Happy new year!</p>
+    {%else %}
+    <p>No you still have time in this yaer</p>
+    {%endif%}
+    
+    {%if mon==12 and day==25%}
+    <p class="christmas">Yes Christmas! What did you get in the morning? or not?!</p>
+    {%else%}
+    <p class="christmas">This is not Christmas yet.</p>
+    <p style="font-size:200%">Have you done good job enough to get christmas gift? Bad Ass</p>
+    {%endif%}
+    <img src="http://www.quickmeme.com/img/09/09861b018cc2a7bcf96795aae7b53692589777d47cdb5a8f57c1ce110dabbd12.jpg",height="150",width="200">
+    
+</body>
+</html>
