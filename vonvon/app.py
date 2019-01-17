@@ -2,12 +2,12 @@ from flask import Flask,render_template, request
 import faker
 import random
 import csv
+import json
 
 app=Flask(__name__)
 a=faker.Faker()
 
 D={}# name matching
-
 # '/':사용자의 이름을 입력 받습니다.
 @app.route("/")
 def index():
@@ -16,14 +16,23 @@ def index():
 # '/job': 사용자에게 랜덤으로 생성된 직업 추천.
 @app.route("/job")
 def job():
+    D={}
+    try:
+        with open("job_list.json","a",encoding="utf-8") as f:
+            data=f.read()
+            D=json.JSONDecoder().decode(data)
+    except: 
+        print("first registeration")
     name=request.args.get("name")
-    name_list=list(D.keys())
-    if name in name_list:
+    if name in D:
         pass
     else:
         D[name]=a.job()
+    with open("job_list.json","a",encoding="utf-8") as f:
+        json_data=json.JSONEncoder().encode(D)
+        f.write(json_data)
+        
     return render_template("job.html",job=D[name])
-
 
 
 @app.route("/dic")
